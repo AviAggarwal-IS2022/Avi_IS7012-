@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\avi\\Documents\\GitHub\\Avi_IS7012-\\RecruitCatAggarwai\\RecruitCatAggarwai\\RecruitCatAggarwai.csproj": {}
+    "C:\\Users\\avi\\Desktop\\RecruitCatAggarwai\\RecruitCatAggarwai\\RecruitCatAggarwai.csproj": {}
   },
   "projects": {
-    "C:\\Users\\avi\\Documents\\GitHub\\Avi_IS7012-\\RecruitCatAggarwai\\RecruitCatAggarwai\\RecruitCatAggarwai.csproj": {
+    "C:\\Users\\avi\\Desktop\\RecruitCatAggarwai\\RecruitCatAggarwai\\RecruitCatAggarwai.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\avi\\Documents\\GitHub\\Avi_IS7012-\\RecruitCatAggarwai\\RecruitCatAggarwai\\RecruitCatAggarwai.csproj",
+        "projectUniqueName": "C:\\Users\\avi\\Desktop\\RecruitCatAggarwai\\RecruitCatAggarwai\\RecruitCatAggarwai.csproj",
         "projectName": "RecruitCatAggarwai",
-        "projectPath": "C:\\Users\\avi\\Documents\\GitHub\\Avi_IS7012-\\RecruitCatAggarwai\\RecruitCatAggarwai\\RecruitCatAggarwai.csproj",
+        "projectPath": "C:\\Users\\avi\\Desktop\\RecruitCatAggarwai\\RecruitCatAggarwai\\RecruitCatAggarwai.csproj",
         "packagesPath": "C:\\Users\\avi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\avi\\Documents\\GitHub\\Avi_IS7012-\\RecruitCatAggarwai\\RecruitCatAggarwai\\obj\\",
+        "outputPath": "C:\\Users\\avi\\Desktop\\RecruitCatAggarwai\\RecruitCatAggarwai\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\avi\\AppData\\Roaming\\NuGet\\NuGet.Config",
