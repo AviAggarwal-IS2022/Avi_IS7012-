@@ -1,0 +1,77 @@
+﻿@page
+@model RecruitCatAggarwai.Pages.Companies.EditModel
+
+@{
+    ViewData["Title"] = "Edit Company";
+}
+
+<h1>Edit Company</h1>
+
+<h4>Company</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Company.CompanyId" />
+            <div class="form-group">
+                <label asp-for="Company.CompanyName" class="control-label"></label>
+                <input asp-for="Company.CompanyName" class="form-control" />
+                <span asp-validation-for="Company.CompanyName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Company.PositionName" class="control-label"></label>
+                <input asp-for="Company.PositionName" class="form-control" />
+                <span asp-validation-for="Company.PositionName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Company.MaxSalary" class="control-label"></label>
+                <input asp-for="Company.MaxSalary" class="form-control" />
+                <span asp-validation-for="Company.MaxSalary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Company.MinSalary" class="control-label"></label>
+                <input asp-for="Company.MinSalary" class="form-control" />
+                <span asp-validation-for="Company.MinSalary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Company.ExpectedStartDate" class="control-label"></label>
+                <input asp-for="Company.ExpectedStartDate" class="form-control" />
+                <span asp-validation-for="Company.ExpectedStartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Company.JobLocation" class="control-label"></label>
+                <input asp-for="Company.JobLocation" class="form-control" />
+                <span asp-validation-for="Company.JobLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Company.IndustryType" class="control-label"></label>
+                <input asp-for="Company.IndustryType" class="form-control" />
+                <span asp-validation-for="Company.IndustryType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Company.Industry_Id" class="control-label"></label>
+                @*<input asp-for="Company.Industry_Id" class="form-control" />*@
+                <select asp-for="Company.Industry_Id" class="form-control" asp-items="ViewBag.IndustryName"></select>
+                <span asp-validation-for="Company.Industry_Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Company.Candidate_Id" class="control-label"></label>
+                @*<input asp-for="Company.Candidate_Id" class="form-control" />*@
+                <select asp-for="Company.Candidate_Id" class="form-control" asp-items="ViewBag.FullName"></select>
+                <span asp-validation-for="Company.Candidate_Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

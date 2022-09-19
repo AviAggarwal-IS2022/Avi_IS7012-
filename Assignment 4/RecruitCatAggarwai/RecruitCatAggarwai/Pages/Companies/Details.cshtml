@@ -1,0 +1,126 @@
+﻿@page
+@model RecruitCatAggarwai.Pages.Companies.DetailsModel
+
+@{
+    ViewData["Title"] = "Company Details";
+}
+
+<h1>Company Details</h1>
+
+<div>
+    <h4>Company</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.CompanyName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.CompanyName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.PositionName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.PositionName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.MaxSalary)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.MaxSalary)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.MinSalary)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.MinSalary)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.ExpectedStartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.ExpectedStartDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.JobLocation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.JobLocation)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.IndustryType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.IndustryType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.Industry_Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.Industry_Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.Candidate_Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.Candidate_Id)
+        </dd>
+    </dl>
+</div>
+@if (Model.Company.Candidate != null)
+{
+    <h1>Your Accounts</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Company.Candidate[0].FullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Company.Candidate[0].TargetSalary)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Company.Candidate[0].ExpectedStartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Company.Candidate[0].ContactNumber)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Company.Candidate)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TargetSalary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExpectedStartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactNumber)
+                    </td>
+                </tr>
+            }
+            <tr>
+                <th></th>
+                <th></th>
+                <th>Total Candidates</th>
+                <th>@Model.Company.Candidate.Sum(x => x.CandidateId)</th>
+                <th></th>
+            </tr>
+        </tbody>
+    </table>
+    <strong>@Model.Company.Candidate.Count Candidates Found</strong>
+}
+else
+{
+    <div>No Candidates Yet!</div>
+}
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Company?.CompanyId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

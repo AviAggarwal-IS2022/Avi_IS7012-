@@ -1,0 +1,57 @@
+﻿@page
+@model RecruitCatAggarwai.Pages.Industries.EditModel
+
+@{
+    ViewData["Title"] = "Edit Industry";
+}
+
+<h1>Edit Industry</h1>
+
+<h4>Industry</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Industry.IndustryId" />
+            <div class="form-group">
+                <label asp-for="Industry.IndustryName" class="control-label"></label>
+                <input asp-for="Industry.IndustryName" class="form-control" />
+                <span asp-validation-for="Industry.IndustryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Industry.IndustryType" class="control-label"></label>
+                <input asp-for="Industry.IndustryType" class="form-control" />
+                <span asp-validation-for="Industry.IndustryType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Industry.NoOfCompanies" class="control-label"></label>
+                <input asp-for="Industry.NoOfCompanies" class="form-control" />
+                <span asp-validation-for="Industry.NoOfCompanies" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Industry.Company_Id" class="control-label"></label>
+                @*<input asp-for="Industry.Company_Id" class="form-control" />*@
+                <select asp-for="Industry.Company_Id" class="form-control" asp-items="ViewBag.CompanyName"></select>
+                <span asp-validation-for="Industry.Company_Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Industry.Candidate_Id" class="control-label"></label>
+                @*<input asp-for="Industry.Candidate_Id" class="form-control" />*@
+                <select asp-for="Industry.Candidate_Id" class="form-control" asp-items="ViewBag.FullName"></select>
+                <span asp-validation-for="Industry.Candidate_Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
