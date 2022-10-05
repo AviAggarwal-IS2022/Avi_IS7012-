@@ -1,0 +1,66 @@
+﻿@page
+@model FoodPanda.Pages.Restaurants.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Restaurants</h1>
+
+<p>
+    <a asp-page="Create" input type="submit" class="btn btn-primary">Add a Restaurant</a>
+    <a asp-page="Search" input type="submit" class="btn btn-primary">Search for a Restaurant</a>
+</p>
+
+<body style="background-color:beige">
+<table class="table-bordered" style="border-color: black; width:1000px; height: 125px; text-align:center; background-color:bisque">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Restaurant[0].RestaurantName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Restaurant[0].Capacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Restaurant[0].Cuisine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Restaurant[0].Dish)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Restaurant[0].Location)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Restaurant) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RestaurantName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacity)
+            </td>
+            <td>
+                @*@for(int i = 0; i < item.Cuisine.Count; i++)*@
+                @Html.DisplayFor(modelItem => item.Cuisine.CuisineName)
+            </td>
+            <td>
+                    @*@for (int i = 0; i < item.Dish.Count; i++)*@
+                @Html.DisplayFor(modelItem => item.Dish.DishName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location.City)
+            </td>
+            <td>
+                <a asp-page="./Edit" input type="submit" class="btn btn-primary" asp-route-id="@item.RestaurantId">Edit</a> |
+                <a asp-page="./Details" input type="submit" class="btn btn-primary" asp-route-id="@item.RestaurantId">Details</a> |
+                <a asp-page="./Delete" input type="submit" class="btn btn-primary" asp-route-id="@item.RestaurantId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>

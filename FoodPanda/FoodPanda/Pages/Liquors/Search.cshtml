@@ -1,0 +1,67 @@
+﻿@page
+@model FoodPanda.Pages.Liquors.SearchModel
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Search Liquor</h1>
+<body style="background-color:beige">
+<div class="row">
+    <div class="col">
+        <form action="" method="get" class="form-inline">
+            <input asp-for="Query" class="form-control mr-sm-2 mb-2" placeholder="Search Liquor..." />
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+        </form>
+    </div>
+</div>
+
+@if (Model.SearchCompleted)
+{
+    if (Model.Liquor.Any())
+    {
+        <table class="table"></table>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-info">
+                    No results match your term <strong>@Model.Query</strong>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+<table class="table-bordered" style="border-color: black; width:1000px; height: 125px; text-align:center; background-color:bisque">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Liquor[0].LiquorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Liquor[0].LiquorType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Liquor) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LiquorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LiquorType)
+            </td>
+            <td>
+                <a asp-page="./Edit" input type="submit" class="btn btn-primary" asp-route-id="@item.LiquorId">Edit</a> |
+                <a asp-page="./Details" input type="submit" class="btn btn-primary" asp-route-id="@item.LiquorId">Details</a> |
+                <a asp-page="./Delete" input type="submit" class="btn btn-primary" asp-route-id="@item.LiquorId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>

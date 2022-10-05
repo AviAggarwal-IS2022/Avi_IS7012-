@@ -1,0 +1,100 @@
+﻿@page
+@model FoodPanda.Pages.Restaurants.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<body style="background-color:beige">
+<div>
+    <h4>Restaurant</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Restaurant.RestaurantName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Restaurant.RestaurantName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Restaurant.Capacity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Restaurant.Capacity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Restaurant.CuisineId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Restaurant.Cuisine.CuisineName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Restaurant.DishId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Restaurant.Dish.DishName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Restaurant.Location)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Restaurant.Location.City)
+        </dd>
+        <dt class="col-sm-2">
+            Rating
+        </dt>
+        <dd class="col-sm-10">
+            @ViewBag.averageRating
+        </dd>
+    </dl>
+</div>
+<table class="table-bordered" style="border-color: black; width:1000px; height: 125px; text-align:center; background-color:bisque">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Restaurant.Review[0].Restaurant.RestaurantName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Restaurant.Review[0].Customer.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Restaurant.Review[0].Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Restaurant.Review[0].Feedback)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Restaurant.Review)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Restaurant.RestaurantName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Feedback)
+                </td>
+                <td>
+                    <a asp-page="./Edit" input type="submit" class="btn btn-primary" asp-route-id="@item.ReviewId">Edit</a> |
+                    <a asp-page="./Details" input type="submit" class="btn btn-primary" asp-route-id="@item.ReviewId">Details</a> |
+                    <a asp-page="./Delete" input type="submit" class="btn btn-primary" asp-route-id="@item.ReviewId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br/>
+<div>
+    <a asp-page="./Edit" input type="submit" class="btn btn-primary" asp-route-id="@Model.Restaurant?.RestaurantId">Edit</a> |
+    <a asp-page="./Index" input type="submit" class="btn btn-primary">Back to List</a>
+</div>
+</body>

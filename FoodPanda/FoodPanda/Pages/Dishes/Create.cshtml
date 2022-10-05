@@ -1,0 +1,40 @@
+﻿@page
+@model FoodPanda.Pages.Dishes.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Add A Dish?</h1>
+
+<h4>Dishes</h4>
+<hr />
+<body style="background-color:beige">
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Dish.DishName" class="control-label"></label>
+                <input asp-for="Dish.DishName" class="form-control" />
+                <span asp-validation-for="Dish.DishName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dish.CuisineId" class="control-label"></label>
+                <select asp-for="Dish.CuisineId" class ="form-control" asp-items="ViewBag.CuisineId"></select>
+            </div>
+            <br/>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br/>
+<div>
+    <a asp-page="Index" input type="submit" class="btn btn-primary">Back to List</a>
+</div>
+</body>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

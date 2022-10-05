@@ -1,0 +1,57 @@
+﻿@page
+@model FoodPanda.Pages.Reviews.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Testimonials</h1>
+
+<p>
+    <a asp-page="Create" input type="submit" class="btn btn-primary">Add a Review</a>
+</p>
+
+<body style="background-color:beige">
+<table class="table-bordered" style="border-color: black; width:1000px; height: 125px; text-align:center; background-color:bisque">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Review[0].Restaurant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Review[0].Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Review[0].Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Review[0].Feedback)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Review) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Restaurant.RestaurantName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Feedback)
+            </td>
+            <td>
+                <a asp-page="./Edit" input type="submit" class="btn btn-primary" asp-route-id="@item.ReviewId">Edit</a> |
+                <a asp-page="./Details" input type="submit" class="btn btn-primary" asp-route-id="@item.ReviewId">Details</a> |
+                <a asp-page="./Delete" input type="submit" class="btn btn-primary" asp-route-id="@item.ReviewId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>

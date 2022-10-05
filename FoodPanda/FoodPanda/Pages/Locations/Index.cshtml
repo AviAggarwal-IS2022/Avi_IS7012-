@@ -1,0 +1,51 @@
+﻿@page
+@model FoodPanda.Pages.Locations.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Locations Served</h1>
+
+<p>
+    <a asp-page="Create" input type="submit" class="btn btn-primary">Add a New Location</a>
+</p>
+
+<body style="background-color:beige">
+<table class="table-bordered" style="border-color: black; width:1000px; height: 125px; text-align:center; background-color:bisque">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Location[0].City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location[0].State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location[0].Country)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Location) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                <a asp-page="./Edit" input type="submit" class="btn btn-primary" asp-route-id="@item.LocationId">Edit</a> |
+                <a asp-page="./Details" input type="submit" class="btn btn-primary" asp-route-id="@item.LocationId">Details</a> |
+                <a asp-page="./Delete" input type="submit" class="btn btn-primary" asp-route-id="@item.LocationId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>

@@ -1,0 +1,56 @@
+﻿@page
+@model FoodPanda.Pages.Clubs.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<body style="background-color:beige">
+<div>
+    <h4>Club</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Club.ClubName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Club.ClubName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Club.Capacity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Club.Capacity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Club.CuisineId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Club.Cuisine.CuisineName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Club.DishId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Club.Dish.DishName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Club.LiquorId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Club.Liquor.LiquorName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Club.Location)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Club.Location.City)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" input type="submit" class="btn btn-primary" asp-route-id="@Model.Club?.ClubId">Edit</a> |
+    <a asp-page="./Index" input type="submit" class="btn btn-primary">Back to List</a>
+</div>
+</body>

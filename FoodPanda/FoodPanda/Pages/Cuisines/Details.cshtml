@@ -1,0 +1,26 @@
+﻿@page
+@model FoodPanda.Pages.Cuisines.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Cuisine Information</h1>
+<body style="background-color:beige">
+<div>
+    <h4>Cuisine</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cuisine.CuisineName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cuisine.CuisineName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" input type="submit" class="btn btn-primary" asp-route-id="@Model.Cuisine?.CuisineId">Edit</a> |
+    <a asp-page="./Index" input type="submit" class="btn btn-primary">Back to List</a>
+</div>
+</body>

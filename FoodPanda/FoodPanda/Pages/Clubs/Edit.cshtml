@@ -1,0 +1,61 @@
+﻿@page
+@model FoodPanda.Pages.Clubs.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Club</h4>
+<hr />
+<body style="background-color:beige">
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Club.ClubId" />
+            <div class="form-group">
+                <label asp-for="Club.ClubName" class="control-label"></label>
+                <input asp-for="Club.ClubName" class="form-control" />
+                <span asp-validation-for="Club.ClubName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Club.Capacity" class="control-label"></label>
+                <input asp-for="Club.Capacity" class="form-control" />
+                <span asp-validation-for="Club.Capacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Club.CuisineId" class="control-label"></label>
+                <select asp-for="Club.CuisineId" class="form-control" asp-items="ViewBag.CuisineId"></select>
+                <span asp-validation-for="Club.CuisineId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Club.DishId" class="control-label"></label>
+                <select asp-for="Club.DishId" class="form-control" asp-items="ViewBag.DishId"></select>
+                <span asp-validation-for="Club.DishId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Club.LiquorId" class="control-label"></label>
+                <select asp-for="Club.LiquorId" class="form-control" asp-items="ViewBag.LiquorId"></select>
+                <span asp-validation-for="Club.LiquorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Club.LocationId" class="control-label"></label>
+                <select asp-for="Club.LocationId" class="form-control" asp-items="ViewBag.LocationId"></select>
+                <span asp-validation-for="Club.LocationId" class="text-danger"></span>
+            </div><br />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br/>
+<div>
+    <a asp-page="./Index" input type="submit" class="btn btn-primary">Back to List</a>
+</div>
+</body>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

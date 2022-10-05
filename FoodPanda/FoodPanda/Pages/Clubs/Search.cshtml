@@ -1,0 +1,91 @@
+﻿@page
+@model FoodPanda.Pages.Clubs.SearchModel
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Search Club</h1>
+<body style="background-color:beige">
+<div class="row">
+    <div class="col">
+        <form action="" method="get" class="form-inline">
+            <input asp-for="Query" class="form-control mr-sm-2 mb-2" placeholder="Search Club..." />
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+        </form>
+    </div>
+</div>
+
+@if (Model.SearchCompleted)
+{
+    if (Model.Club.Any())
+    {
+        <table class="table"></table>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-info">
+                    No results match your term <strong>@Model.Query</strong>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+<table class="table-bordered" style="border-color: black; width:1000px; height: 125px; text-align:center; background-color:bisque">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Club[0].ClubName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Club[0].Capacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Club[0].CuisineId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Club[0].DishId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Club[0].LiquorId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Club[0].Location)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Club) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClubName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cuisine.CuisineName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dish.DishName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Liquor.LiquorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location.City)
+            </td>
+            <td>
+                <a asp-page="./Edit" input type="submit" class="btn btn-primary" asp-route-id="@item.ClubId">Edit</a> |
+                <a asp-page="./Details" input type="submit" class="btn btn-primary" asp-route-id="@item.ClubId">Details</a> |
+                <a asp-page="./Delete" input type="submit" class="btn btn-primary" asp-route-id="@item.ClubId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
